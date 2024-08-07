@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import BookingDetails from './Components/BookingDetails/BookingDetails';
+import DummyTickets from './Components/Dummy-Tickets/DummyTickets';
+import Footer from './Components/Footer/Footer';
+import Main from './Components/Main/Main';
+import { Routes, Route } from 'react-router-dom';
+import PaymentComponent from './Components/Payment/PaymentComponent';
+import Login from './Components/Auth/Login';
+import Signup from './Components/Auth/Signup';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/dummy-tickets" element={<DummyTickets />} />
+        <Route path='/booking-details' element={<BookingDetails />} />
+        <Route path='/payment-page' element={<PaymentComponent />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+
     </div>
   );
 }

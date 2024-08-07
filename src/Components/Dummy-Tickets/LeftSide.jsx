@@ -1,0 +1,194 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import { Link, useNavigate } from "react-router-dom";
+
+const LeftSide = () => {
+
+    const navigate = useNavigate();
+    const [activeButton, setActiveButton] = useState('Flight');
+    const [tripType, setTripType] = useState('One Way');
+    const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
+    const [fromResults, setFromResults] = useState([]);
+    const [toResults, setToResults] = useState([]);
+    const [departueDate, setDepartureDate] = useState('');
+    const [returnDate, setReturnDate] = useState('');
+
+
+    useEffect(() => {
+        if (from.length > 2) {
+            axios.get(`https://api.tequila.kiwi.com/locations/query?term=${from}&locale=en-US&location_types=airport&limit=20&active_only=true`, {
+                headers: {
+                    'apikey': 'nst7nQCznwAahbh0dsvDFx9bh0qxC4lm'
+                }
+            })
+                .then(response => {
+                    setFromResults(response.data.locations);
+                })
+                .catch(error => {
+                    console.error('Error fetching data: ', error);
+                });
+        } else {
+            setFromResults([]);
+        }
+    }, [from]);
+
+    useEffect(() => {
+        if (to.length > 2) {
+            axios.get(`https://api.tequila.kiwi.com/locations/query?term=${to}&locale=en-US&location_types=airport&limit=20&active_only=true`, {
+                headers: {
+                    'apikey': 'nst7nQCznwAahbh0dsvDFx9bh0qxC4lm'
+                }
+            })
+                .then(response => {
+                    setToResults(response.data.locations);
+                })
+                .catch(error => {
+                    console.error('Error fetching data: ', error);
+                });
+        } else {
+            setToResults([]);
+        }
+    }, [to]);
+
+    const handleSelectFrom = (airport) => {
+        setFrom(`${airport.name} (${airport.code})`);
+        setFromResults([]);
+    };
+
+    const handleSelectTo = (airport) => {
+        setTo(`${airport.name} (${airport.code})`);
+        setToResults([]);
+    };
+    const handleValidation = () => {
+        if (!from || !to || !departueDate || (tripType === 'Round Trip' && !returnDate)) {
+            alert('Please fill in all fields.');
+        } else {
+            navigate("/booking-details", {
+                state: {
+                    from,
+                    to,
+                    departureDate: departueDate,
+                    returnDate: tripType === 'Round Trip' ? returnDate : null,
+                    tripType : tripType === 'Round Trip' ? tripType: null
+                }
+            });
+        }
+    };
+
+
+    return (
+        <div className="right w-[50%] flex  justify-center items-center font-bold">
+            <div className="form  border rounded-md w-[70%] bg-white p-3">
+                <div className="fhb-container flex bg-[#efefef] py-2 px-3 justify-between rounded-lg">
+                    <button
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Flight' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        onClick={() => setActiveButton('Flight')}
+                    >
+                        Flight
+                    </button>
+                    <button
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Hotels' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        onClick={() => setActiveButton('Hotels')}
+                    >
+                        Hotels
+                    </button>
+                    <button
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Both' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        onClick={() => setActiveButton('Both')}
+                    >
+                        Both
+                    </button>
+                </div>
+                <div className="subparts mt-4 px-2">
+                    <div className="fhb-container flex bg-[#efefef] py-2 px-4 justify-between rounded-full">
+                        <label htmlFor="OneWay">
+                            <input
+                                type="radio"
+                                name="triptype"
+                                className="cursor-pointer"
+                                checked={tripType === 'One Way'}
+                                onChange={() => setTripType('One Way')}
+                            />
+                            <span className="ml-3 text-[#ec601d]">One Way</span>
+                        </label>
+                        <label htmlFor="RoundTrip">
+                            <input
+                                type="radio"
+                                name="triptype"
+                                className="ml-3 cursor-pointer"
+                                checked={tripType === 'Round Trip'}
+                                onChange={() => setTripType('Round Trip')}
+                            />
+                            <span className="ml-3 text-[#ec601d]">Round Trip</span>
+                        </label>
+                    </div>
+                    <div className="mt-8 gap-y-3 flex  flex-col">
+                        <div className="relative">
+                            <span className="text-[#ec601d]">From</span>
+                            <input
+                                type="text"
+                                value={from}
+                                onChange={(e) => setFrom(e.target.value)}
+                                className="w-full outline-none border rounded-md p-3"
+                            />
+                            {fromResults.length > 0 && (
+                                <ul className="p-[10px] absolute bg-[#faebd7] w-full rounded-md z-10">
+                                    {fromResults.slice(0, 5).map((airport) => (
+                                        <li key={airport.id} onClick={() => handleSelectFrom(airport)}>
+                                            <div>
+                                                <p className="text-xl font-normal">{airport.name}</p>
+                                                <div className="flex justify-between my-3">
+                                                    <span>{airport.city.name}</span>
+                                                    <span>-</span>
+                                                    <span>{airport.code}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+
+                        <div className="relative">
+                            <span className="text-[#ec601d]">To</span>
+                            <input
+                                type="text"
+                                value={to}
+                                onChange={(e) => setTo(e.target.value)}
+                                className="w-full outline-none border rounded-md p-3"
+                            />
+                            {toResults.length > 0 && (
+                                <ul className="p-[10px] absolute bg-[#faebd7] w-full rounded-md z-10">
+                                    {toResults.slice(0, 5).map((airport) => (
+                                        <li key={airport.id} onClick={() => handleSelectTo(airport)}>
+                                            <div>
+                                                <p className="text-xl font-normal">{airport.name}</p>
+                                                <div className="flex justify-between my-3">
+                                                    <span>{airport.city.name}</span>
+                                                    <span>-</span>
+                                                    <span>{airport.code}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                        <span className="text-[#ec601d]">Departure</span>
+                        <input type="date" className="w-full outline-none border rounded-md p-3" placeholder="Departure Date" onChange={(e) => setDepartureDate(e.target.value)} />
+                        {tripType === 'Round Trip' && (
+                            <>
+                                <span className="text-[#ec601d]">Return</span>
+                                <input type="date" className="w-full outline-none border rounded-md p-3" placeholder="Return Date" onChange={(e) => setReturnDate(e.target.value)} />
+                            </>
+                        )}
+                        <button onClick={handleValidation} className="bg-[#ec601d] text-white p-5 rounded-md text-center">BUY DUMMY TICKET</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+export default LeftSide;
