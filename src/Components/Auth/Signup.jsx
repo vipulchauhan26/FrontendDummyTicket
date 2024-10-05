@@ -21,7 +21,8 @@ const Signup = () => {
         }))
     }
     const handleSignup = () => {
-        if (!formData.name || !formData.email || !formData.password) {
+        if (!formData.username || !formData.email || !formData.password || !formData.password) {
+            console.log(formData);
             alert("Please Provide all details");
             return;
         }
