@@ -15,7 +15,7 @@ const Signup = () => {
     })
 
     const handleFormData = (e) => {
-        setFormData((preVal) => ({
+        setFormData((preVal) => ({ 
             ...preVal,
             [e.target.name]: e.target.value
         }))
