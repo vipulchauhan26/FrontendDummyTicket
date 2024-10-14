@@ -52,16 +52,19 @@ const PaymentComponent = () => {
     //This method will generate the hashvalue
     const paymentReq = async () => {
         try {
+            const token = localStorage.getItem("token");
             console.log(data, "sent");
-            reshash = await axios.post(`http://localhost:8080/api/payment`, JSON.stringify(data), {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+                reshash = await axios.post(`http://localhost:8080/api/payment`, JSON.stringify(data), {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
         } catch {
             console.log("Payment Error");
         }
     };
+
 
     //We are using a modal, to open the payment transaction gateway after a click 
     const handleCheckClose = () => setOnCheckOpen(false); //close the modal
@@ -78,15 +81,17 @@ const PaymentComponent = () => {
             phone: phone,
             productinfo: "dummyTicket",
             surl: "http://localhost:8080/api/test", //url called if payment is successful
-            furl: "http://localhost:3000", //url called when payment fails
+            furl: "http://localhost:8080/api/testFailure", //url called when payment fails
             hash: reshash?.data?.hash,  //hashvalue 
             service_provider: "payu_paisa",
         };
         let res;
         try {
+            const token = localStorage.getItem("token");
             res = await axios.post(`http://localhost:8080/api/response`, JSON.stringify(pd), {
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 },
             });
             console.log(res);
@@ -99,9 +104,9 @@ const PaymentComponent = () => {
     };
     useEffect(() => {
         if (self) {
-          window.location.href = self;
+            window.location.href = self;
         }
-      }, [self]);
+    }, [self]);
     return (
         <Modal
             open={oncheckOpen}

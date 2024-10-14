@@ -1,33 +1,9 @@
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useLocation } from "react-router-dom";
-const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetailsChange }) => {
+const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetailsChange, passengers, setPassengers, addPassenger }) => {
     const location = useLocation();
     const { from, to, departureDate, returnDate } = location.state || {};
-    const [defaultPassenger, setDefaultPassenger] = useState([
-        { title: 'Mr', firstName: '', lastName: '', dob: '', nationality: '' }]
-    );
-
-    // Function to handle input changes
-    const handleDefaultPassenger = (event) => {
-        const { name, value } = event.target;
-        console.log("name", name, "value", value)
-        setDefaultPassenger({
-            ...defaultPassenger,
-            [name]: value
-        })
-    }
-
-    const [passengers, setPassengers] = useState([]);
-
-    const addPassenger = () => {
-        setPassengers([
-            ...passengers,
-            { title: 'Mr', firstName: '', lastName: '', dob: '', nationality: '' }
-        ]);
-        setTotalPassenger(totalPassenger + 1);
-
-    };
 
     const handleClose = (indexs) => {
         console.log(indexs);
@@ -53,16 +29,16 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
         name: '',
         phone: '',
         email: ''
-      });
-    
-      const handleInputsChange = (e) => {
+    });
+
+    const handleInputsChange = (e) => {
         const { name, value } = e.target;
         setContactDetails(prevDetails => ({
-          ...prevDetails,
-          [name]: value
+            ...prevDetails,
+            [name]: value
         }));
         onContactDetailsChange({ [name]: value });
-      };
+    };
     return (
         <div className="w-[70%]">
             <div className="left-detail mt-10">
@@ -260,223 +236,17 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                 onChange={handleInputsChange} />
                         </div>
                         <input type="text" placeholder="Name" className="border rounded-md p-3" name="name" value={contactDetails.name}
-                                onChange={handleInputsChange} />
+                            onChange={handleInputsChange} />
                         <input type="text" placeholder="Email" className="border rounded-md p-3" name="email" value={contactDetails.email}
-                                onChange={handleInputsChange}/>
+                            onChange={handleInputsChange} />
                     </div>
+                    
 
-
-                    <div className="mt-6 flex flex-col gap-6">
-                        <h4 className="text-xl">Passenger 1</h4>
-                        <div className="flex gap-6">
-                            <div className="left w-[50%] flex flex-col gap-6">
-                                <div className="flex">
-                                    <select className="dropdown border rounded-md p-3" value={defaultPassenger.title}
-                                        onChange={(e) => handleDefaultPassenger(e)} name="title">
-                                        <option value="Mr">Mr</option>
-                                        <option value="Ms">Ms</option>
-                                        <option value="Mrs">Mrs</option>
-                                    </select>
-                                    <input type="text" name="firstName" placeholder="First Name" className="w-full border rounded-md p-3" value={defaultPassenger.firstName} onChange={(e) => handleDefaultPassenger(e)} />
-                                </div>
-                                <input type="date" name="dob" placeholder="DOB" className="w-full border rounded-md p-3" value={defaultPassenger.dob} onChange={(e) => handleDefaultPassenger(e)} />
-                            </div>
-                            <div className="right w-[50%] flex flex-col gap-6">
-                                <input type="text" name="lastname" placeholder="Last Name" className="border rounded-md p-3" value={defaultPassenger.lastName} onChange={(e) => handleDefaultPassenger(e)} />
-                                <select className="dropdown border rounded-md p-3" name="nationality" value={defaultPassenger.nationality} onChange={(e) => handleDefaultPassenger(e)}>
-                                    <option value="" disabled selected>Select Nationality</option>
-                                    <option value="Afghan">Afghan</option>
-                                    <option value="Albanian">Albanian</option>
-                                    <option value="Algerian">Algerian</option>
-                                    <option value="American">American</option>
-                                    <option value="Andorran">Andorran</option>
-                                    <option value="Angolan">Angolan</option>
-                                    <option value="Antiguans">Antiguans</option>
-                                    <option value="Argentine">Argentine</option>
-                                    <option value="Armenian">Armenian</option>
-                                    <option value="Australian">Australian</option>
-                                    <option value="Austrian">Austrian</option>
-                                    <option value="Azerbaijani">Azerbaijani</option>
-                                    <option value="Bahamian">Bahamian</option>
-                                    <option value="Bahraini">Bahraini</option>
-                                    <option value="Bangladeshi">Bangladeshi</option>
-                                    <option value="Barbadian">Barbadian</option>
-                                    <option value="Belarusian">Belarusian</option>
-                                    <option value="Belgian">Belgian</option>
-                                    <option value="Belizean">Belizean</option>
-                                    <option value="Beninese">Beninese</option>
-                                    <option value="Bhutanese">Bhutanese</option>
-                                    <option value="Bolivian">Bolivian</option>
-                                    <option value="Bosnian">Bosnian</option>
-                                    <option value="Botswanan">Botswanan</option>
-                                    <option value="Brazilian">Brazilian</option>
-                                    <option value="Bruneian">Bruneian</option>
-                                    <option value="Bulgarian">Bulgarian</option>
-                                    <option value="Burkinabe">Burkinabe</option>
-                                    <option value="Burmese">Burmese</option>
-                                    <option value="Burundian">Burundian</option>
-                                    <option value="Cabo Verdean">Cabo Verdean</option>
-                                    <option value="Cambodian">Cambodian</option>
-                                    <option value="Cameroonian">Cameroonian</option>
-                                    <option value="Canadian">Canadian</option>
-                                    <option value="Central African">Central African</option>
-                                    <option value="Chadian">Chadian</option>
-                                    <option value="Chilean">Chilean</option>
-                                    <option value="Chinese">Chinese</option>
-                                    <option value="Colombian">Colombian</option>
-                                    <option value="Comorian">Comorian</option>
-                                    <option value="Congolese">Congolese</option>
-                                    <option value="Costa Rican">Costa Rican</option>
-                                    <option value="Croatian">Croatian</option>
-                                    <option value="Cuban">Cuban</option>
-                                    <option value="Cypriot">Cypriot</option>
-                                    <option value="Czech">Czech</option>
-                                    <option value="Danish">Danish</option>
-                                    <option value="Djiboutian">Djiboutian</option>
-                                    <option value="Dominican">Dominican</option>
-                                    <option value="Dutch">Dutch</option>
-                                    <option value="East Timorese">East Timorese</option>
-                                    <option value="Ecuadorean">Ecuadorean</option>
-                                    <option value="Egyptian">Egyptian</option>
-                                    <option value="Salvadoran">Salvadoran</option>
-                                    <option value="Equatorial Guinean">Equatorial Guinean</option>
-                                    <option value="Eritrean">Eritrean</option>
-                                    <option value="Estonian">Estonian</option>
-                                    <option value="Ethiopian">Ethiopian</option>
-                                    <option value="Fijian">Fijian</option>
-                                    <option value="Filipino">Filipino</option>
-                                    <option value="Finnish">Finnish</option>
-                                    <option value="French">French</option>
-                                    <option value="Gabonese">Gabonese</option>
-                                    <option value="Gambian">Gambian</option>
-                                    <option value="Georgian">Georgian</option>
-                                    <option value="German">German</option>
-                                    <option value="Ghanaian">Ghanaian</option>
-                                    <option value="Greek">Greek</option>
-                                    <option value="Grenadian">Grenadian</option>
-                                    <option value="Guatemalan">Guatemalan</option>
-                                    <option value="Guinean">Guinean</option>
-                                    <option value="Guyanese">Guyanese</option>
-                                    <option value="Haitian">Haitian</option>
-                                    <option value="Honduran">Honduran</option>
-                                    <option value="Hungarian">Hungarian</option>
-                                    <option value="I-Kiribati">I-Kiribati</option>
-                                    <option value="Icelander">Icelander</option>
-                                    <option value="Indian">Indian</option>
-                                    <option value="Indonesian">Indonesian</option>
-                                    <option value="Iranian">Iranian</option>
-                                    <option value="Iraqi">Iraqi</option>
-                                    <option value="Irish">Irish</option>
-                                    <option value="Israeli">Israeli</option>
-                                    <option value="Italian">Italian</option>
-                                    <option value="Jamaican">Jamaican</option>
-                                    <option value="Japanese">Japanese</option>
-                                    <option value="Jordanian">Jordanian</option>
-                                    <option value="Kazakhstani">Kazakhstani</option>
-                                    <option value="Kenyan">Kenyan</option>
-                                    <option value="Kiribati">Kiribati</option>
-                                    <option value="Kuwaiti">Kuwaiti</option>
-                                    <option value="Kyrgyz">Kyrgyz</option>
-                                    <option value="Laotian">Laotian</option>
-                                    <option value="Latvian">Latvian</option>
-                                    <option value="Lebanese">Lebanese</option>
-                                    <option value="Liberian">Liberian</option>
-                                    <option value="Libyan">Libyan</option>
-                                    <option value="Liechtensteiner">Liechtensteiner</option>
-                                    <option value="Lithuanian">Lithuanian</option>
-                                    <option value="Luxembourger">Luxembourger</option>
-                                    <option value="Malagasy">Malagasy</option>
-                                    <option value="Malawian">Malawian</option>
-                                    <option value="Malaysian">Malaysian</option>
-                                    <option value="Maldivian">Maldivian</option>
-                                    <option value="Malian">Malian</option>
-                                    <option value="Maltese">Maltese</option>
-                                    <option value="Marshallese">Marshallese</option>
-                                    <option value="Mauritian">Mauritian</option>
-                                    <option value="Mexican">Mexican</option>
-                                    <option value="Micronesian">Micronesian</option>
-                                    <option value="Moldovan">Moldovan</option>
-                                    <option value="Monacan">Monacan</option>
-                                    <option value="Mongolian">Mongolian</option>
-                                    <option value="Montenegrin">Montenegrin</option>
-                                    <option value="Moroccan">Moroccan</option>
-                                    <option value="Mozambican">Mozambican</option>
-                                    <option value="Namibian">Namibian</option>
-                                    <option value="Nauruan">Nauruan</option>
-                                    <option value="Nepalese">Nepalese</option>
-                                    <option value="Nigerien">Nigerien</option>
-                                    <option value="North Korean">North Korean</option>
-                                    <option value="Northern Irish">Northern Irish</option>
-                                    <option value="Norwegian">Norwegian</option>
-                                    <option value="Omani">Omani</option>
-                                    <option value="Pakistani">Pakistani</option>
-                                    <option value="Palauan">Palauan</option>
-                                    <option value="Panamanian">Panamanian</option>
-                                    <option value="Papua New Guinean">Papua New Guinean</option>
-                                    <option value="Paraguayan">Paraguayan</option>
-                                    <option value="Peruvian">Peruvian</option>
-                                    <option value="Polish">Polish</option>
-                                    <option value="Portuguese">Portuguese</option>
-                                    <option value="Qatari">Qatari</option>
-                                    <option value="Romanian">Romanian</option>
-                                    <option value="Russian">Russian</option>
-                                    <option value="Rwandan">Rwandan</option>
-                                    <option value="Saint Lucian">Saint Lucian</option>
-                                    <option value="Saint Vincentian">Saint Vincentian</option>
-                                    <option value="Samoan">Samoan</option>
-                                    <option value="San Marinese">San Marinese</option>
-                                    <option value="Sao Tomean">Sao Tomean</option>
-                                    <option value="Saudi">Saudi</option>
-                                    <option value="Senegalese">Senegalese</option>
-                                    <option value="Serbian">Serbian</option>
-                                    <option value="Seychellois">Seychellois</option>
-                                    <option value="Sierra Leonean">Sierra Leonean</option>
-                                    <option value="Singaporean">Singaporean</option>
-                                    <option value="Slovak">Slovak</option>
-                                    <option value="Slovenian">Slovenian</option>
-                                    <option value="Somali">Somali</option>
-                                    <option value="South African">South African</option>
-                                    <option value="South Sudanese">South Sudanese</option>
-                                    <option value="Spanish">Spanish</option>
-                                    <option value="Sri Lankan">Sri Lankan</option>
-                                    <option value="Sudanese">Sudanese</option>
-                                    <option value="Surinamese">Surinamese</option>
-                                    <option value="Swazi">Swazi</option>
-                                    <option value="Swedish">Swedish</option>
-                                    <option value="Swiss">Swiss</option>
-                                    <option value="Syrian">Syrian</option>
-                                    <option value="Taiwanese">Taiwanese</option>
-                                    <option value="Tajik">Tajik</option>
-                                    <option value="Tanzanian">Tanzanian</option>
-                                    <option value="Thai">Thai</option>
-                                    <option value="Togolese">Togolese</option>
-                                    <option value="Tongan">Tongan</option>
-                                    <option value="Trinidadian">Trinidadian</option>
-                                    <option value="Tunisian">Tunisian</option>
-                                    <option value="Turkish">Turkish</option>
-                                    <option value="Turkmen">Turkmen</option>
-                                    <option value="Tuvaluan">Tuvaluan</option>
-                                    <option value="Ugandan">Ugandan</option>
-                                    <option value="Ukrainian">Ukrainian</option>
-                                    <option value="Uruguayan">Uruguayan</option>
-                                    <option value="Uzbekistani">Uzbekistani</option>
-                                    <option value="Vanuatuan">Vanuatuan</option>
-                                    <option value="Venezuelan">Venezuelan</option>
-                                    <option value="Vietnamese">Vietnamese</option>
-                                    <option value="Yemeni">Yemeni</option>
-                                    <option value="Zambian">Zambian</option>
-                                    <option value="Zimbabwean">Zimbabwean</option>
-                                </select>
-
-                            </div>
-                        </div>
-
-                    </div>
                     {passengers.map((passenger, index) => (
                         <div className="mt-6 flex flex-col gap-6">
                             <hr className="border-b border-dashed border-gray-400" />
                             <div className="flex justify-between">
-                                <h4 className="text-xl">Passenger {index + 2}</h4>
+                                <h4 className="text-xl">Passenger {index + 1}</h4>
                                 <span onClick={() => handleClose(index)}><IoMdClose /></span>
                             </div>
                             <div className="flex gap-6">
@@ -493,7 +263,7 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                     <input type="date" name="dob" placeholder="DOB" className="w-full border rounded-md p-3" value={passenger.dob} onChange={(e) => handleInputChange(index, e)} />
                                 </div>
                                 <div className="right w-[50%] flex flex-col gap-6">
-                                    <input type="text" name="lastName" placeholder="Last Name" className="border rounded-md p-3" />
+                                    <input type="text" name="lastName" placeholder="Last Name" className="border rounded-md p-3" value={passenger.lastName} onChange={(e) => handleInputChange(index, e)}/>
                                     <select className="dropdown border rounded-md p-3" value={passenger.nationality} onChange={(e) => handleInputChange(index, e)} name="nationality">
                                         <option value="" disabled selected>Select Nationality</option>
                                         <option value="Afghan">Afghan</option>

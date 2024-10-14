@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const LeftSide = () => {
 
@@ -61,21 +62,54 @@ const LeftSide = () => {
         setTo(`${airport.name} (${airport.code})`);
         setToResults([]);
     };
+    // const handleValidation = () => {
+    //     if (!from || !to || !departueDate || (tripType === 'Round Trip' && !returnDate)) {
+    //         alert('Please fill in all fields.');
+    //     } else if(dep)
+    //     else {
+    //         navigate("/booking-details", {
+    //             state: {
+    //                 from,
+    //                 to,
+    //                 departureDate: departueDate,
+    //                 returnDate: tripType === 'Round Trip' ? returnDate : null,
+    //                 tripType : tripType === 'Round Trip' ? tripType: null
+    //             }
+    //         });
+    //     }
+    // };
     const handleValidation = () => {
+        // Get today's date
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set time to 00:00:00 for comparison
+        const todayString = today.toISOString().split('T')[0];
+    
+        // Check for empty fields
         if (!from || !to || !departueDate || (tripType === 'Round Trip' && !returnDate)) {
-            alert('Please fill in all fields.');
-        } else {
+            toast.error('Please fill in all fields.');
+        } 
+        // Check if the departure date is less than today
+        else if (departueDate < todayString) {
+            toast.error('Departure date cannot be in the past. Please select a valid date.');
+        } 
+        // For round trips, check if the return date is also valid
+        else if (tripType === 'Round Trip' && returnDate < todayString) {
+            toast.error('Return date cannot be in the past. Please select a valid date.');
+        } 
+        // All validations passed, navigate to booking details
+        else {
             navigate("/booking-details", {
                 state: {
                     from,
                     to,
                     departureDate: departueDate,
                     returnDate: tripType === 'Round Trip' ? returnDate : null,
-                    tripType : tripType === 'Round Trip' ? tripType: null
+                    tripType: tripType === 'Round Trip' ? tripType : null
                 }
             });
         }
     };
+    
 
 
     return (
@@ -188,6 +222,7 @@ const LeftSide = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

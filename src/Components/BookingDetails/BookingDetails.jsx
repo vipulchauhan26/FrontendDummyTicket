@@ -6,9 +6,10 @@ import BookingDetailsRight from "./BookingDetailsRight";
 import airlinesData from "./airlines.json";
 import axios from "axios";
 import Footer from "../Footer/Footer";
+import { ToastContainer, toast } from 'react-toastify';
 const BookingDetails = () => {
     const location = useLocation();
-    const [totalPassenger, setTotalPassenger] = useState(1);
+    const [totalPassenger, setTotalPassenger] = useState(0);
     const [amount, setAmount] = useState(400);
     const [tripAmount, setTripAmount] = useState();
     const { from, to, departureDate, returnDate, tripType } = location.state || {};
@@ -25,6 +26,17 @@ const BookingDetails = () => {
 
     const handleContactDetailsChange = (updatedDetails) => {
         setContactDetails(prevDetails => ({ ...prevDetails, ...updatedDetails }));
+    };
+
+    const [passengers, setPassengers] = useState([]);
+
+    const addPassenger = () => {
+        setPassengers([
+            ...passengers,
+            { title: 'Mr', firstName: '', lastName: '', dob: '', nationality: '' }
+        ]);
+        setTotalPassenger(totalPassenger + 1);
+
     };
 
     const formatDate = (date) => {
@@ -83,7 +95,7 @@ const BookingDetails = () => {
             });
             const flightData = airlines.data.data[0];
             setJourneyDetails(airlines.data.data[0].route);
-            console.log(airlines,"oneway")
+            console.log(airlines, "oneway")
             if (flightData && flightData.duration) {
                 setDeparture(getTotalTime(flightData?.duration?.total));
             }
@@ -121,15 +133,36 @@ const BookingDetails = () => {
 
     const handlePaymentClick = () => {
         // console.log(contactDetails,"contact");
-        navigate("/payment-page", {
-            state: {
-                amount: total,
-                name: contactDetails.name,
-                phone: contactDetails.phone,
-                email: contactDetails.email
-            }
-        });
+        if (validateContactDetails()) {
+            navigate("/payment-page", {
+                state: {
+                    amount: total,
+                    name: contactDetails.name,
+                    phone: contactDetails.phone,
+                    email: contactDetails.email
+                }
+            });
+        }
     }
+
+    const validateContactDetails = () => {
+        if (!contactDetails.name || !contactDetails.phone || !contactDetails.email) {
+            toast.error("Please fill in all contact details (name, phone, and email) before making the payment.");
+            return false;
+        }
+        else if(totalPassenger<1){
+            toast.error("Please add Passenger");
+            return false;
+        }
+        for (let i = 0; i < passengers.length; i++) {
+            const passenger = passengers[i];
+            if (!passenger.title || !passenger.firstName || !passenger.lastName || !passenger.dob || !passenger.nationality) {
+                toast.error(`Please fill in all details for passenger ${i + 1}.`);
+                return false;
+            }
+        }
+        return true;
+    };
 
 
     useEffect(() => {
@@ -148,7 +181,7 @@ const BookingDetails = () => {
                 <h3 className=" text-center underline text-[#ec601d] text-4xl">Booking Details</h3>
                 <div className=" flex w-full gap-x-3">
 
-                    <BookingDetailsRight totalPassenger={totalPassenger} setTotalPassenger={setTotalPassenger} onContactDetailsChange={handleContactDetailsChange} />
+                    <BookingDetailsRight totalPassenger={totalPassenger} setTotalPassenger={setTotalPassenger} onContactDetailsChange={handleContactDetailsChange} passengers={passengers} setPassengers={setPassengers} addPassenger={addPassenger}/>
                     <div className="right-detail mt-10 w-[30%] flex flex-col">
                         <div className="borde-2 border-[#ec601d] rounded-md text-center p-5 bg-[#ec601d]">Order Summary</div>
                         <div className="detai pt-6">
@@ -214,6 +247,7 @@ const BookingDetails = () => {
                         }
                     </div>
                 </div>
+                <ToastContainer />
             </div>
             <Footer />
         </>
