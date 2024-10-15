@@ -131,26 +131,39 @@ const BookingDetails = () => {
 
     }
 
-    const handlePaymentClick = () => {
+    const generateTxnId = () => {
+        const timestamp = Date.now().toString(); // Current timestamp
+        const randomString = Math.random().toString(36).substr(2, 9); // Random alphanumeric string
+        return timestamp + randomString; // Concatenate the timestamp and random string
+    };
+
+    const formattedAmount = parseFloat(total).toFixed(2);
+   
+    const handlePaymentClick = async () => {
         // console.log(contactDetails,"contact");
         if (validateContactDetails()) {
             navigate("/payment-page", {
                 state: {
-                    amount: total,
+                    amount: formattedAmount,
                     name: contactDetails.name,
                     phone: contactDetails.phone,
-                    email: contactDetails.email
+                    email: contactDetails.email,
+                    passengers: passengers
                 }
             });
         }
     }
+
+
+    //This method will generate the hashvalue
+    
 
     const validateContactDetails = () => {
         if (!contactDetails.name || !contactDetails.phone || !contactDetails.email) {
             toast.error("Please fill in all contact details (name, phone, and email) before making the payment.");
             return false;
         }
-        else if(totalPassenger<1){
+        else if (totalPassenger < 1) {
             toast.error("Please add Passenger");
             return false;
         }
@@ -181,7 +194,7 @@ const BookingDetails = () => {
                 <h3 className=" text-center underline text-[#ec601d] text-4xl">Booking Details</h3>
                 <div className=" flex w-full gap-x-3">
 
-                    <BookingDetailsRight totalPassenger={totalPassenger} setTotalPassenger={setTotalPassenger} onContactDetailsChange={handleContactDetailsChange} passengers={passengers} setPassengers={setPassengers} addPassenger={addPassenger}/>
+                    <BookingDetailsRight totalPassenger={totalPassenger} setTotalPassenger={setTotalPassenger} onContactDetailsChange={handleContactDetailsChange} passengers={passengers} setPassengers={setPassengers} addPassenger={addPassenger} />
                     <div className="right-detail mt-10 w-[30%] flex flex-col">
                         <div className="borde-2 border-[#ec601d] rounded-md text-center p-5 bg-[#ec601d]">Order Summary</div>
                         <div className="detai pt-6">
