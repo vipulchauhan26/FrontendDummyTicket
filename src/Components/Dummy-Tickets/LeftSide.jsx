@@ -104,7 +104,7 @@ const LeftSide = () => {
                     to,
                     departureDate: departueDate,
                     returnDate: tripType === 'Round Trip' ? returnDate : null,
-                    tripType: tripType === 'Round Trip' ? tripType : null
+                    tripType: tripType === 'Round Trip' ? tripType : "one Way"
                 }
             });
         }

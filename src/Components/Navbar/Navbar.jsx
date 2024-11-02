@@ -52,7 +52,7 @@ const Navbar = () => {
                                     <p 
                                         className="dropdown-item text-center text-sm py-2 cursor-pointer hover:bg-gray-100"
                                         onClick={handleLogout}
-                                    >
+                                    > 
                                         Logout
                                     </p>
                                 </div>

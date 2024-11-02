@@ -8,6 +8,7 @@ import PaymentComponent from './Components/Payment/PaymentComponent';
 import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 import 'react-toastify/dist/ReactToastify.css';
+import DownloadTicketPage from './Components/Payment/DownloadTicketPage';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/payment-page' element={<PaymentComponent />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/downloadTicket" element={<DownloadTicketPage />} />
       </Routes>
 
     </div>

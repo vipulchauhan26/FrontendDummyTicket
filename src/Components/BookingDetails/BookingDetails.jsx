@@ -87,7 +87,7 @@ const BookingDetails = () => {
         const fromCode = extractCode(from);
         const toCode = extractCode(to);
 
-        if (fromCode && toCode && !tripType) {
+        if (fromCode && toCode && tripType === "one Way") {
             const airlines = await axios.get(`https://api.tequila.kiwi.com/v2/search?fly_from=${fromCode}&fly_to=${toCode}&date_from=${formattedDepartureDate}&date_to=${formattedDepartureDate}&ret_from_diff_city=true&ret_to_diff_city=true&one_for_city=0&one_per_date=0&only_working_days=false&only_weekends=false&limit=2`, {
                 headers: {
                     'apikey': 'nst7nQCznwAahbh0dsvDFx9bh0qxC4lm'
@@ -148,7 +148,8 @@ const BookingDetails = () => {
                     name: contactDetails.name,
                     phone: contactDetails.phone,
                     email: contactDetails.email,
-                    passengers: passengers
+                    passengers: passengers,
+                    travellingDetails: location.state
                 }
             });
         }
@@ -184,7 +185,7 @@ const BookingDetails = () => {
 
     useEffect(() => {
         // Calculate the total and update state
-        const calculatedTotal = tripType ? (amount * totalPassenger) * 2 : amount * totalPassenger;
+        const calculatedTotal = tripType === "Round Trip" ? (amount * totalPassenger) * 2 : amount * totalPassenger;
         setTotal(calculatedTotal);
     }, [tripType, totalPassenger, amount]);
 
@@ -207,8 +208,8 @@ const BookingDetails = () => {
 
                                 <div className="flex flex-col gap-2 mt-28">
                                     <div className="flex justify-between">
-                                        <span>{tripType ? 'Routes * 2' : 'Routes'}</span>
-                                        <span0>{tripType ? '800' : '400'}</span0>
+                                        <span>{tripType === "Round Trip" ? 'Routes * 2' : 'Routes'}</span>
+                                        <span0>{tripType === "Round Trip" ? '800' : '400'}</span0>
                                     </div>
                                     <hr className="border-b border-dashed border-gray-400" />
                                     <div className="flex justify-between">
