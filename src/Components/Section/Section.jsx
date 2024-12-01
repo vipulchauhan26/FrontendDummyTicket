@@ -6,7 +6,7 @@ const Section = ({ heading,image }) => {
             <div className="cards-container flex  py-2 justify-between  mt-10">
                 <div className="cards flex flex-col rounded-lg shadow-lg w-[20%] min-w-[200px] cursor-pointer overflow-hidden">
                     <span className="imagecontainer relative  rounded-t-lg">
-                        <img src={image} alt="image" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
+                        <img src={image} alt="" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
                     </span>
                     <div className="p-3 mt-4">
                         <span className=" text-lg font-bold">Title</span>
@@ -28,7 +28,7 @@ const Section = ({ heading,image }) => {
 
                 <div className="cards flex flex-col rounded-lg shadow-lg w-[20%] min-w-[200px] cursor-pointer overflow-hidden">
                     <span className="imagecontainer relative  rounded-t-lg">
-                        <img src={image} alt="image" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
+                        <img src={image} alt="" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
                     </span>
                     <div className="p-3 mt-4">
                         <span className=" text-lg font-bold">Title</span>
@@ -50,7 +50,7 @@ const Section = ({ heading,image }) => {
 
                 <div className="cards flex flex-col rounded-lg shadow-lg w-[20%] min-w-[200px] cursor-pointer overflow-hidden">
                     <span className="imagecontainer relative  rounded-t-lg">
-                        <img src={image} alt="image" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
+                        <img src={image} alt="" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
                     </span>
                     <div className="p-3 mt-4">
                         <span className=" text-lg font-bold">Title</span>
@@ -72,7 +72,7 @@ const Section = ({ heading,image }) => {
 
                 <div className="cards flex flex-col rounded-lg shadow-lg w-[20%] min-w-[200px] cursor-pointer overflow-hidden">
                     <span className="imagecontainer relative  rounded-t-lg">
-                        <img src={image} alt="image" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
+                        <img src={image} alt="" className=" hover:scale-110 transition-scale duration-200 ease-linear object-cover object-center aspect-[4/3] rounded-t-lg" />
                     </span>
                     <div className="p-3 mt-4">
                         <span className=" text-lg font-bold">Title</span>

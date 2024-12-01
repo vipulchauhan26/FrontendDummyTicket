@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const LeftSide = () => {
@@ -112,9 +112,10 @@ const LeftSide = () => {
     
 
 
+
     return (
-        <div className="right w-[50%] flex  justify-center items-center font-bold">
-            <div className="form  border rounded-md w-[70%] bg-white p-3">
+        <div className="right w-[100%] sm:w-[100%]  md:w-[40%]  lg:w-[40%] xl:w-[40%] font-bold">
+            <div className="form w-[100%]  sm:w-[100%]  md:w-[100%]  lg:w-[100%] xl:w-[100%]  border rounded-md bg-white p-3">
                 <div className="fhb-container flex bg-[#efefef] py-2 px-3 justify-between rounded-lg">
                     <button
                         className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Flight' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}

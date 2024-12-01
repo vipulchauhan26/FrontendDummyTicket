@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Footer from "../Footer/Footer";
 import 'react-toastify/dist/ReactToastify.css';
 import useSignup from "../../utils/useSignup";
+import Navbar from "../Navbar/Navbar";
 
 const Signup = () => {
     const { signup, loading, error, success, setSuccess, setError } = useSignup();
@@ -45,10 +46,11 @@ const Signup = () => {
         }
     }, [error]);
     return (
-        <div className="h-[100vh] bg-gradient-to-r from-white from-67% to-green-100 to-33%">
-            <div>
-                <div className="h-[100vh] ">
-                    <div className="flex  justify-center p-14 ">
+        <>
+        <Navbar/>
+        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] h-[500px] px-3 mt-20"   style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}}>
+             
+                <div className="flex justify-center p-14 w[100%] my-100 ">
                         <div className="login-container w-96 border border-white py-[30px] px-[20px] bg-white rounded-md shadow-2xl shadow-slate-900">
                             <span className=" font-bold text-3xl text-center block mb-[15px]">Signup</span>
                             <div className="text-field-container flex flex-col">
@@ -66,14 +68,14 @@ const Signup = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+             
                 <ToastContainer />
-            </div>
-            <div className="fixed bottom-0 w-full">
-                <Footer />
-            </div>
-            
-        </div>
+          
+               
+        
+        </section>
+        <Footer />
+        </>
     )
 }
 

@@ -7,6 +7,7 @@ import airlinesData from "./airlines.json";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import { ToastContainer, toast } from 'react-toastify';
+import Navbar from "../Navbar/Navbar";
 const BookingDetails = () => {
     const location = useLocation();
     const [totalPassenger, setTotalPassenger] = useState(0);
@@ -191,15 +192,17 @@ const BookingDetails = () => {
 
     return (
         <>
-            <div className=" flex w-full px-[10%] py-[10%] flex-col font-bold  bg-gradient-to-r from-white from-67% to-green-100 to-33%">
+        <Navbar/>
+        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] px-3" style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}} >
+            <div className=" flex w-full px-[2%] sm:px-[10%] md:px-[10%] lg:px-[10%] py-[10] flex-col font-bold ">
                 <h3 className=" text-center underline text-[#ec601d] text-4xl">Booking Details</h3>
-                <div className=" flex w-full gap-x-3">
+                <div className=" flex w-full gap-x-3 flex-wrap">
 
                     <BookingDetailsRight totalPassenger={totalPassenger} setTotalPassenger={setTotalPassenger} onContactDetailsChange={handleContactDetailsChange} passengers={passengers} setPassengers={setPassengers} addPassenger={addPassenger} />
-                    <div className="right-detail mt-10 w-[30%] flex flex-col">
-                        <div className="borde-2 border-[#ec601d] rounded-md text-center p-5 bg-[#ec601d]">Order Summary</div>
+                    <div className="right-detail mt-10 w-[100%] sm:w-[37%] md:w-[30%] lg:w-[30%] xl:w-[30%] 2xl:w-[30%]   flex flex-col">
+                        <div className="borde-2 border-[#ec601d] rounded-md text-center p-3 bg-[#ec601d] text-white">Order Summary</div>
                         <div className="detai pt-6">
-                            <div className="borde-2  border-[#ec601d] rounded-md text-center p-4 bg-slate-400">flight</div>
+                            <div className="borde-2  border-[#ec601d] rounded-md text-center p-3 bg-slate-400 text-white">Flight</div>
                             <div className="pt-3 px-2">
                                 <p>{from}</p>
                                 <span className="flex w-full justify-center"><HiMiniArrowRight /></span>
@@ -212,7 +215,7 @@ const BookingDetails = () => {
                                         <span0>{tripType === "Round Trip" ? '800' : '400'}</span0>
                                     </div>
                                     <hr className="border-b border-dashed border-gray-400" />
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between ">
                                         <span>Amount * {totalPassenger}</span>
                                         <span>{amount * totalPassenger}</span>
                                     </div>
@@ -225,30 +228,30 @@ const BookingDetails = () => {
                             </div>
                         </div>
                         <div className="px-2">
-                            <button className="w-full text-2xl bg-[#ec601d] rounded-md p-4 mt-4 hover:text-white" onClick={handlePaymentClick}>Pay Now</button>
+                            <button className="w-full text-1xl bg-[#ec601d] text-white rounded-md p-3 mt-4 hover:text-white" onClick={handlePaymentClick}>Pay Now</button>
                         </div>
 
                         {
                             JourneyDetails && JourneyDetails.map((item) => (
-                                <div className="flightdetails mt-10   bg-white rounded-md ">
+                                <div className="flightdetails mt-10   bg-white rounded-xl p-6  shadow-md">
                                     <div className="airlines flex items-center">
                                         <span><img src={getAirlineLogo(item?.airline)} className="w-16" alt="airline" /></span>
                                         {/* <span><img src="/images/AIC.png" className="w-16" alt="airline" /></span> */}
-                                        <div className="flex flex-col ml-5">
+                                        <div className="flex flex-col ml-5 text-sm">
                                             <span >{`Airline Name: ${getAirlineName(item?.airline)}`}</span>
                                             <span>{item?.cityFrom} to {item?.cityTo}</span>
                                         </div>
                                     </div>
                                     <hr />
-                                    <div className="trip-details flex gap-12 w-full my-4 justify-between">
+                                    <div className="trip-details flex gap-2 w-full my-4 justify-between">
                                         <div className="flex flex-col">
                                             <span className=" text-center">{`${formatDate(item?.local_departure)}`}</span>
                                             <span className=" text-center text-4xl">{item?.cityCodeFrom}</span>
                                             {/* <span className=" text-center">(INDIRA GANDHI)</span> */}
                                         </div>
                                         <div className="flex justify-center items-center flex-col">
-                                            <span className="text-center">{departure}</span>
-                                            <span>{`(Total Time)`}</span>
+                                            <span className="text-center text-sm">{departure}</span>
+                                            <span className="text-sm">{`(Total Time)`}</span>
                                         </div>
                                         <div className="flex flex-col ">
                                             <span className=" text-center">{`${formatDate(item?.local_arrival)}`}</span>
@@ -263,6 +266,8 @@ const BookingDetails = () => {
                 </div>
                 <ToastContainer />
             </div>
+
+            </section>  
             <Footer />
         </>
     )

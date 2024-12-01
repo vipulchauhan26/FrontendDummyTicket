@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import Footer from "../Footer/Footer";
 import useLogin from "../../utils/useLogin";
+import Navbar from "../Navbar/Navbar";
 
 const Login = () => {
     const { login, loading, error, success, setSuccess, setError } = useLogin();
@@ -42,10 +43,12 @@ const Login = () => {
         }
     }, [error]);
     return (
-        <div className="h-[100vh] bg-gradient-to-r from-white from-67% to-green-100 to-33%">
-            <div>
-                <div className="flex justify-center p-14 ">
-                    <div className="login-container w-96 border  py-[30px] px-[20px] bg-white rounded-md shadow-2xl shadow-slate-900">
+        <>
+        <Navbar/>
+        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] h-[500px] px-3 mt-20"   style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}}>
+       
+                <div className="flex justify-center p-14 w[100%] my-100 ">
+                    <div className="login-container w-96 border  py-[30px] px-[20px] bg-white rounded-md shadow-2xl shadow-slate-900 m-auto">
                         <span className=" font-bold text-3xl text-center block mb-[15px]">Login</span>
                         <div className="text-field-container flex flex-col">
                             <input type="text" name="email" placeholder="example@example.com" className="mb-[10px] border border-black bg-white  rounded-md p-[6px] outline-none" onChange={handleFormData} value={formData.email} required />
@@ -60,12 +63,17 @@ const Login = () => {
                         </button>
                     </div>
                 </div>
-            </div>
-            <div className="fixed bottom-0 w-full">
-                <Footer />
-            </div>
+           
+           
             <ToastContainer />
-        </div>
+     
+       
+        </section>
+         
+         <Footer />
+        
+     
+     </>
     )
 }
 

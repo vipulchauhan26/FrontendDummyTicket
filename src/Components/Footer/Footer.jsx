@@ -1,7 +1,9 @@
 import { PiCopyrightLight } from "react-icons/pi";
 const Footer = () => {
     return (
-        <div className="px-[10%] bg-black">
+       <>
+       <div className="h-[122px]  sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] px-3 bg-[#d3bdbb] bg-no-repeat bg-cover " style={{ backgroundImage: 'url(images/footer-after-image.webp)' }}></div>
+        <div className="px-[10%] bg-[#fef6f0]" >
             {/* <div className="flex text-white py-12 justify-between">
                 <div className="flex justify-between w-[60%]">
                     <div className=" flex flex-col gap-y-3 text-lg font-bold">
@@ -48,7 +50,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr className=" border-[#3f3f46]" /> */}
-            <div className="py-12 text-white flex justify-center items-center">
+            <div className="py-12 text-black flex flex-wrap justify-center items-center">
                 <span className="px-5 border-r">Home</span>
                 <span className="px-5 border-r">FAQ</span>
                 <span className="border-r px-5 ">Contact</span>
@@ -64,6 +66,7 @@ const Footer = () => {
                 </span>
             </div>
         </div>
+        </>
     )
 }
 

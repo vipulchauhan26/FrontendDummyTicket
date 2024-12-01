@@ -112,8 +112,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+//import tripCafelogo from 'http://localhost:3000/images/trip-cafe.jpg';
+
 import axios from 'axios';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, PDFViewer, Image,  } from '@react-pdf/renderer';
 
 // Create styles for the PDF document
 const styles = StyleSheet.create({
@@ -121,79 +123,212 @@ const styles = StyleSheet.create({
         padding: 20,
         fontFamily: 'Helvetica',
     },
-    title: {
-        fontSize: 24,
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    section: {
-        marginBottom: 10,
-        fontSize: 16,
-    },
-    label: {
-        fontWeight: 'bold',
-    },
-    termsTitle: {
-        color: "green",
-        fontSize: 30,
-        marginBottom: 20
-    },
-    termSection: {
-        marginBottom: 30,
-        fontSize: 16,
-    },
-    termHeading: {
-        fontWeight: "bold"
-    },
-    footer:{
-        marginTop:20,
-        textAlign:"center"
-    },
+    title: {flexDirection: "row", alignItems: "center",marginBottom: 20, width: '100%', borderBottom:'2px solid #333', paddingBottom:'10px',display:'inline-block'},
+    logo:{ width:'154px', },
+    headRight:{ width:'400px', },
+    headtextg:{width:'100%',padding:'5px 0',textAlign:'right',fontWeight: 'bold', color:'green',fontSize:10,},
+    headtextp:{ width:'100%', padding:'5px 0', textAlign:'right',fontWeight:'400', color:'black', fontSize:10,},
+    booknoLabel:{fontWeight:'bold', fontSize:10,},
+    bookno:{ fontWeight:'bold',fontSize:20, textTransform:'uppercase' },
+    booknocontentA:{fontWeight:'400',fontSize:11, paddingTop:'40px', paddingBottom:'10px'},
+    booknocontentb:{ fontWeight:'400', fontSize:11,paddingBottom:'40px'},
+    flightLabel:{ fontWeight:'bold', fontSize:11,},
+    flightDetail:{flexDirection: "row", alignItems: "center",marginBottom: 20, width: '100%', marginBottom:'50px'},
+    flightlog:{width: '60px', marginRight:'50px'},
+    flightlogs: { textAlign:'center'},
+    flightnadetName: {fontWeight:'bold', fontSize:9, width: '100%', marginBottom:'5px', textAlign:'left'},
+    flightnadet: {fontWeight:'bold', fontSize:8, width: '100%', textAlign:'left'},
+    flightTimeDate:{width: '100px', marginRight:'60px'},
+    flightNo:{fontWeight:'800', fontSize:19, width: '100%', },
+    flightDate:{fontWeight:'bold', fontSize:14, width: '100%', },
+    flightloc:{fontWeight:'bold', fontSize:9, width: '100%', textAlign:'left'},
+    flighthour:{ width:'90px', textAlign:'center'},
+    flighticon:{ width:'100%',textAlign:'center' },
+    flighttime:{ fontWeight:'bold', fontSize:8, width: '100%', textAlign:'left',width:'100%', textAlign:'center'},
+    flightTimeDateb:{width: '100px', marginLeft:'60px'},
+    flightNob:{fontWeight:'800', fontSize:19, width: '100%', },
+    flightDateb:{fontWeight:'bold', fontSize:14, width: '100%', },
+    flightlocb:{fontWeight:'bold', fontSize:9, width: '100%', textAlign:'left'},
+    pdetailtable:{marginBottom: 20, width: '100%', marginBottom:'20px'},
+    pdetailtableHead:{flexDirection: "row", alignItems: "center", width:'100%', borderBottom:'1px solid #333', paddingBottom:'5px', marginBottom:'5px'},
+    pdetailtableHeadName:{width:'208px', fontWeight:'bold', fontSize:'9', textTransform:'uprecase'},
+    pdetailtableHeadPNR:{width:'150px', fontWeight:'bold', fontSize:'9', textTransform:'uprecase'},
+    pdetailtableHeadTNo:{width:'150px', fontWeight:'bold', fontSize:'9', textTransform:'uprecase'},
+    pdetailtableHeadSeat:{width:'150px', fontWeight:'bold', fontSize:'9', textTransform:'uprecase'},
+
+    pdetailtablebody:{flexDirection: "row", alignItems: "center", width:'100%', paddingBottom:'5px'},
+    pdetailtablebodySno:{width:'8px', fontWeight:'bold', fontSize:'9', },
+    pdetailtablebodyName:{width:'200px', fontWeight:'bold', fontSize:'9', },
+    pdetailtablebodyPNR:{width:'150px', fontWeight:'bold', fontSize:'9',},
+    pdetailtablebodyTNo:{width:'150px', fontWeight:'bold', fontSize:'9', },
+    pdetailtablebodySeat:{width:'150px', fontWeight:'bold', fontSize:'9',},
+
+
+    section: { marginBottom: 10, fontSize: 16,},
+    label: { fontWeight: 'bold',},
+    termsTitle: { color: "black", fontSize: 30, marginBottom: 20},
+    termSection: { marginBottom: 20, fontSize: 13, lineHeight:1.3, textAlign:'justify', color:'#333' },
+    termHeading: { fontWeight: "600", color:'#000'},
+    footer:{ marginTop:20, textAlign:"center", fontSize: 12, lineHeight:1.5, fontWeight:'black'},
     hr: {
-        marginTop:10,
+        marginTop:0,
+        marginBottom:20,
         borderBottomColor: '#ccc', // color for the horizontal line
         borderBottomWidth: 1,      // thickness of the horizontal line
-        marginVertical: 10,        // space around the line
+        marginVertical: 30,        // space around the line
+    },
+    hrfoot: {
+        marginTop:0,
+        marginBottom:20,
+        borderBottomColor: '#ccc', // color for the horizontal line
+        borderBottomWidth: 1,      // thickness of the horizontal line
+        marginVertical: 15,        // space around the line
     },
 });
 
 const TicketDocument = ({ ticketData }) => (
-    <Document>
+ 
+ <Document>
         {/* First Page with ticket details */}
         <Page style={styles.page}>
-
-            <Text style={styles.title}>Booking Ticket</Text>
-
+         
+                <View style={styles.title}>
+                   <View style={styles.logo}><Image src='images/trip-cafe.jpg' alt=''/></View>
+                   <View style={styles.headRight}>
+                      
+                        <Text style={styles.headtextg}>Booking Confirmed</Text>
+                        <Text style={styles.headtextp}><Text style={styles.label}>Ticketing Date:</Text> 04/11/2024 | <Text style={styles.label}>Ticketing Time:</Text> 11:18:35 IST</Text>
+                        <Text style={styles.headtextp}><Text style={styles.label}>PNR:</Text> XXXXXX </Text>
+                      
+                   </View>
+                </View>
+            
             <View style={styles.section}>
-                <Text style={styles.label}>Transaction ID:</Text>
-                <Text>{ticketData.txnid}</Text>
+                <Text style={styles.booknoLabel}>BOOKING ID:</Text>
+                <Text style={styles.bookno}>FF21030813639176</Text>
             </View>
-
             <View style={styles.section}>
+                <Text style={styles.booknocontentA} >Hi Anand,</Text>
+                <Text style={styles.booknocontentb} >Your flight ticket for New Delhi-Dubai is confirmed. Your tickets are attached along with the email. Your Booking
+                reference no. is 1205</Text>
+
+            </View>
+            <View style={styles.section}>
+            <Text style={styles.flightLabel}>New Delhi To Patna</Text>
+                </View>
+             <View style={styles.flightDetail}>
+                <View style={styles.flightlog}>
+                    <Image src='images/AIC.png' alt=''/>
+                    <Text style={styles.flightnadetName}>Air India</Text>
+                    <Text style={styles.flightnadet}>AI-409</Text>
+                    <Text style={styles.flightnadet}>ECONOMY</Text>
+                </View>
+
+                <View  style={styles.flightTimeDate}>
+                <Text style={styles.flightnadetName}>New Delhi</Text>
+                    <Text style={styles.flightNo}>DEL 10:35</Text>
+                    <Text style={styles.flightDate}>FRI, 18 JUN ‘21</Text> 
+                    <Text style={styles.flightloc}>Indira Gandhi Intl Airport Terminal 3</Text> 
+                </View>
+                <View style={styles.flighthour}>
+                <Text style={styles.flighticon}><Image src='images/airplane.png' alt=''/></Text> 
+                <Text style={styles.flighttime}>1h 35m</Text> 
+                </View>
+                
+                <View  style={styles.flightTimeDateb}>
+                <Text style={styles.flightnadetName}>Patna</Text>
+                    <Text style={styles.flightNob}>PAT 12:10</Text>
+                    <Text style={styles.flightDateb}>FRI, 18 JUN ‘21</Text> 
+                    <Text style={styles.flightlocb}>Lok Nayak Jaya Prakash
+                    Narayan Airport </Text> 
+                </View>
+             </View>
+             <View style={styles.pdetailtable}>
+                <View style={styles.pdetailtableHead}>
+                   <Text style={styles.pdetailtableHeadName}>PASSENGER NAME</Text>
+                   <Text style={styles.pdetailtableHeadPNR}>PNR</Text>
+                   <Text style={styles.pdetailtableHeadTNo}>E-TICKET NO</Text>
+                   <Text style={styles.pdetailtableHeadSeat}>SEAT</Text>
+                </View>
+                <View style={styles.pdetailtablebody}>
+                <Text style={styles.pdetailtablebodySno}>1.</Text>
+                   <Text style={styles.pdetailtablebodyName}>Mr. Anand Kumar Singh, Adult</Text>
+                   <Text style={styles.pdetailtablebodyPNR}>YQB5J </Text>
+                   <Text style={styles.pdetailtablebodyTNo}>0984722231949</Text>
+                   <Text style={styles.pdetailtablebodySeat}>Windo Seat</Text>
+                </View>
+             </View>
+             <View style={styles.hr}></View>
+             <View style={styles.section}>
+               <Text style={styles.flightLabel}>Patna to New Delhi </Text>
+                </View>
+             <View style={styles.flightDetail}>
+                <View style={styles.flightlog}>
+                    <Image src='images/AIC.png' alt=''/>
+                    <Text style={styles.flightnadetName}>Air India</Text>
+                    <Text style={styles.flightnadet}>AI-409</Text>
+                    <Text style={styles.flightnadet}>ECONOMY</Text>
+                </View>
+
+                <View  style={styles.flightTimeDate}>
+                <Text style={styles.flightnadetName}>Patna </Text>
+                    <Text style={styles.flightNo}>PAT 12:10 </Text>
+                    <Text style={styles.flightDate}>FRI, 18 JUN ‘21</Text> 
+                    <Text style={styles.flightloc}>Lok Nayak Jaya Prakash
+                    Narayan Airport </Text> 
+                </View>
+                <View style={styles.flighthour}>
+                <Text style={styles.flighticon}><Image src='images/airplane.png' alt=''/></Text> 
+                <Text style={styles.flighttime}>1h 35m</Text> 
+                </View>
+                
+                <View  style={styles.flightTimeDateb}>
+                <Text style={styles.flightnadetName}New Delhi></Text>
+                    <Text style={styles.flightNob}>DEL 10:35</Text>
+                    <Text style={styles.flightDateb}>FRI, 18 JUN ‘21</Text> 
+                    <Text style={styles.flightlocb}>Indira Gandhi Intl Airport Terminal 3</Text> 
+                </View>
+             </View>
+             <View style={styles.pdetailtable}>
+                <View style={styles.pdetailtableHead}>
+                   <Text style={styles.pdetailtableHeadName}>PASSENGER NAME</Text>
+                   <Text style={styles.pdetailtableHeadPNR}>PNR</Text>
+                   <Text style={styles.pdetailtableHeadTNo}>E-TICKET NO</Text>
+                   <Text style={styles.pdetailtableHeadSeat}>SEAT</Text>
+                </View>
+                <View style={styles.pdetailtablebody}>
+                <Text style={styles.pdetailtablebodySno}>1.</Text>
+                   <Text style={styles.pdetailtablebodyName}>Mr. Anand Kumar Singh, Adult</Text>
+                   <Text style={styles.pdetailtablebodyPNR}>YQB5J </Text>
+                   <Text style={styles.pdetailtablebodyTNo}>0984722231949</Text>
+                   <Text style={styles.pdetailtablebodySeat}>Windo Seat</Text>
+                </View>
+             </View>
+            {/* <View style={styles.section}>
                 <Text style={styles.label}>Name:</Text>
-                <Text>{ticketData.firstname} {ticketData.lastname}</Text>
+                <Text>Anand Raj</Text>
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.label}>Amount:</Text>
-                <Text>{ticketData.amount}</Text>
+                <Text>200</Text>
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.label}>Payment Status:</Text>
-                <Text>{ticketData.status}</Text>
-            </View>
+                <Text>Paid</Text>
+            </View> */}
 
-            <View style={styles.section}>
+            {/* <View style={styles.section}>
                 <Text style={styles.label}>Passengers:</Text>
                 {ticketData.passengers.map((passenger, index) => (
                     <Text key={index}>
                         {passenger.title} {passenger.firstName} {passenger.lastName}, DOB: {passenger.dob}
                     </Text>
                 ))}
-            </View>
+            </View> */}
 
-            <View style={styles.section}>
+            {/* <View style={styles.section}>
                 <Text style={styles.label}>Travel Details:</Text>
                 <Text>From: {ticketData.travellingDetails.from}</Text>
                 <Text>To: {ticketData.travellingDetails.to}</Text>
@@ -202,7 +337,7 @@ const TicketDocument = ({ ticketData }) => (
                     <Text>Return: {ticketData.travellingDetails.returnDate}</Text>
                 )}
                 <Text>Trip Type: {ticketData.travellingDetails.tripType}</Text>
-            </View>
+            </View> */}
         </Page>
 
         {/* Second Page with Terms & Conditions */}
@@ -253,9 +388,9 @@ const TicketDocument = ({ ticketData }) => (
                     in travel matters.
                 </Text>
             </View>
-            <View style={styles.hr} />
+            <View style={styles.hrfoot} />
             <View style={styles.footer}>
-                <Text style={styles.termsText}>Thank you for choosing TripCafe for your dummy flight ticket</Text>
+                <Text style={styles.termsText}>Thank you for choosing TripCafeHolidays.com for your dummy flight ticket</Text>
             </View>
         </Page>
     </Document>
@@ -292,9 +427,9 @@ const DownloadTicketPage = () => {
     }
 
     // If no data found, display an error message
-    if (!ticketData) {
-        return <Text>No ticket found for transaction ID: {txnId}</Text>;
-    }
+    // if (!ticketData) {
+    //     return <Text>No ticket found for transaction ID: {txnId}</Text>;
+    // }
 
     // Provide a download link for the PDF document
     return (
@@ -307,7 +442,8 @@ const DownloadTicketPage = () => {
         {({ loading }) => (loading ? 'Generating PDF...' : 'Download Ticket PDF')}
       </PDFDownloadLink> */}
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
-                <TicketDocument ticketData={ticketData} />
+                {/* <TicketDocument ticketData={ticketData} /> */}
+                <TicketDocument />
             </PDFViewer>
 
         </div>

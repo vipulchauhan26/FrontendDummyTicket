@@ -40,18 +40,18 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
         onContactDetailsChange({ [name]: value });
     };
     return (
-        <div className="w-[70%]">
+        <div className="w-[100%] sm:w-[68.8%] md:w-[68.8%] lg:w-[68.8%] xl:w-[68.8%]">
             <div className="left-detail mt-10">
                 <div className="flex justify-between">
-                    <div className="w-[33%] borde-2 border-[#ec601d] rounded-md text-center p-5 bg-[#ec601d]">Routes</div>
-                    <div className="w-[33%] border-2 border-[#ec601d] rounded-md text-center p-5 bg-[#ec601d]">Passenger</div>
-                    <div className="w-[33%] border-2 border-[#ec601d] rounded-md text-center p-5">Additional</div>
+                    <div className="w-[33%] borde-2 border-[#ec601d] rounded-md text-center p-3 bg-[#ec601d] text-white">Routes</div>
+                    <div className="w-[33%] border-2 border-[#ec601d] rounded-md text-center p-3 bg-[#ec601d] text-white">Passenger</div>
+                    <div className="w-[33%] border-2 border-[#ec601d] rounded-md text-center p-3">Additional</div>
                 </div>
                 <div className="pt-6 px-2">
                     <div className="flex flex-col gap-6">
                         <h4 className="text-xl">Contact Details</h4>
-                        <div className="contact flex">
-                            <select className="dropdown border rounded-md p-3">
+                        <div className="contact flex flex-wrap">
+                            <select className="dropdown border rounded-md p-3 w-[100%] sm:w-[48%] md:w-[48%] lg:w-[48%] xl:w-[48%]">
                                 <option value="" disabled selected>Country Code</option>
                                 <option value="+1">+1 United States</option>
                                 <option value="+7">+7 Russia</option>
@@ -231,7 +231,7 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                 <option value="+691">+691 Micronesia</option>
                             </select>
 
-                            <input type="text" className=" ml-4 border rounded-md p-3 w-full" name="phone" placeholder="9999999999"
+                            <input type="text" className=" ml-0 mt-4 sm:ml-4 md:ml-4 lg:ml-4 sl:ml-4 sm:mt-0 md:mt-0  lg:mt-0 xl:mt-0   border rounded-md p-3 w-[100%] sm:w-[48.8%] md:w-[48.8%] lg:w-[48.8%] xl:w-[48.8%]" name="phone" placeholder="9999999999"
                                 value={contactDetails.phone}
                                 onChange={handleInputsChange} />
                         </div>
