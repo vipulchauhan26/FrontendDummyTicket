@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { json, useLocation } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const PaymentComponent = () => {
     const generateTxnId = () => {
@@ -55,8 +57,10 @@ const PaymentComponent = () => {
     }, []); // Empty dependency array ensures it only runs once
 
     return (
-        <div>
-            <div className="container mx-auto p-4 ">
+        <>
+        <Navbar/>
+        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] px-3" style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}} >
+            <div className="container mx-auto sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] px-[2%] sm:px-[5.5%] md:px-[5.5%] lg:px-[5.5%] xl:px-[5.5%] py-10">
                 <div className="bg-white shadow-md rounded-lg p-6">
                     <h1 className="text-2xl font-bold mb-4">Hello, {name}!</h1>
                     <h2 className="text-xl font-semibold mb-4">Payment Details</h2>
@@ -114,7 +118,9 @@ const PaymentComponent = () => {
                     </form>
                 )}
             </div>
-        </div>
+            </section>
+            <Footer/>
+        </>
     );
 };
 
