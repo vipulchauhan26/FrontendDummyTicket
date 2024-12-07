@@ -49,28 +49,37 @@ export default function Testimonials() {
       <OwlCarousel className='slider-items owl-carousel' {...options}>
       <div className='item'>
             <div className='bg-white w-[100%] flex flex-col gap-10 rounded-xl justify-center align-items-center  p-5 '>
-                <div className='icon-box m-auto w-[60px]'><img src='images/tasty-quotes-icon.webp'/></div>
+                <div className='icon-box m-auto w-[40px]'><img src='images/tasty-quotes-icon.webp'/></div>
             <div >
-            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>I have used their 03 services i.e. Dummy Flight, Hotel and Visa Assistance and had a very positive experience. I liked their quick response and also being able to communicate on WhatsApp when I needed a change. Would recommend definitely.</p>
-            <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div>
+            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>Thanks for processing my dummy flight booking instantly. My visa application got accepted last week, and my visa is on the way. </p>
+            {/* <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div> */}
             </div>
         </div> 
         </div>  
         <div className='item'>
             <div className='bg-white w-[100%] flex flex-col gap-10 rounded-xl justify-center align-items-center  p-5 '>
-                <div className='icon-box m-auto w-[60px]'><img src='images/tasty-quotes-icon.webp'/></div>
+                <div className='icon-box m-auto w-[40px]'><img src='images/tasty-quotes-icon.webp'/></div>
             <div >
-            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>I have used their 03 services i.e. Dummy Flight, Hotel and Visa Assistance and had a very positive experience. I liked their quick response and also being able to communicate on WhatsApp when I needed a change. Would recommend definitely.</p>
-            <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div>
+            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>I appreciate the support and guidance of TripCafe on dummy tickets for visa application. </p>
+            {/* <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div> */}
             </div>
         </div> 
         </div> 
         <div className='item'>
             <div className='bg-white w-[100%] flex flex-col gap-10 rounded-xl justify-center align-items-center  p-5 '>
-                <div className='icon-box m-auto w-[60px]'><img src='images/tasty-quotes-icon.webp'/></div>
+                <div className='icon-box m-auto w-[40px]'><img src='images/tasty-quotes-icon.webp'/></div>
             <div >
-            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>I have used their 03 services i.e. Dummy Flight, Hotel and Visa Assistance and had a very positive experience. I liked their quick response and also being able to communicate on WhatsApp when I needed a change. Would recommend definitely.</p>
-            <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div>
+            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>Quick flight booking confirmation at tripcafe helped me get the visa on time for our Paris holiday</p>
+            {/* <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div> */}
+            </div>
+        </div> 
+        </div> 
+        <div className='item'>
+            <div className='bg-white w-[100%] flex flex-col gap-10 rounded-xl justify-center align-items-center  p-5 '>
+                <div className='icon-box m-auto w-[40px]'><img src='images/tasty-quotes-icon.webp'/></div>
+            <div >
+            <p className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[400] mb-7'>Good service at the best price. Liked it. Thank you TripCafe team</p>
+            {/* <div className='text-center text-1xl md:text-1xl lg:text-1xl xl:text-1xl font-[600]'><strong>Luca Romano</strong></div> */}
             </div>
         </div> 
         </div> 

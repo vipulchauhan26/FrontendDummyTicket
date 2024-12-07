@@ -21,7 +21,7 @@ const DummyTickets = () => {
                 <div className="md:container md:mx-auto px-3 sd:px-10  md:px-10 lg:px-10 xl:px-10 2xl:px-10">
                         <div className="flex w-full flex-wrap gap-y-6">
                         <div className="left sm:w-[100%] md:w-[60%] lg:w-[60%] xl:w-[60%] flex flex-col items-start justify-center gap-y-6">
-                        <h1 className=" text-4xl md:text-6xl lg:text-6xl xl:text-6xl font-bold">Get Dummy Tickets for Flights, Hotels, and More!</h1>
+                        <h1 className=" text-4xl md:text-6xl lg:text-6xl xl:text-6xl font-bold">Dummy flight/hotel reservation or visa @ $10</h1>
                         <p className="text-[#333] text-xl font-medium">We provide dummy flight tickets, hotel reservations, travel insurance, detailed itineraries, and complete visa assistance for smooth visa applications.</p>
                         {/* <button className="bg-[#ec601d] rounded-md p-5 text-white font-bold">Buy Dummy Tickets</button> */}
                         </div>

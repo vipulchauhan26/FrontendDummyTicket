@@ -118,19 +118,19 @@ const LeftSide = () => {
             <div className="form w-[100%]  sm:w-[100%]  md:w-[100%]  lg:w-[100%] xl:w-[100%]  border rounded-md bg-white p-3">
                 <div className="fhb-container flex bg-[#efefef] py-2 px-3 justify-between rounded-lg">
                     <button
-                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Flight' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-md ${activeButton === 'Flight' ? 'bg-[#cc2c21] hover:bg-[#ad0e03] text-white' : 'bg-white text-black'}`}
                         onClick={() => setActiveButton('Flight')}
                     >
                         Flight
                     </button>
                     <button
-                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Hotels' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-md ${activeButton === 'Hotels' ? 'bg-[#cc2c21] hover:bg-[#ad0e03] text-white' : 'bg-white text-black'}`}
                         onClick={() => setActiveButton('Hotels')}
                     >
                         Hotels
                     </button>
                     <button
-                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-sm ${activeButton === 'Both' ? 'bg-[#ec601d] text-white' : 'bg-white text-black'}`}
+                        className={`text-center w-[33%] p-2 transition-colors duration-400 ease-linear rounded-md ${activeButton === 'Both' ? 'bg-[#cc2c21] hover:bg-[#ad0e03] text-white' : 'bg-white text-black'}`}
                         onClick={() => setActiveButton('Both')}
                     >
                         Both
@@ -146,7 +146,7 @@ const LeftSide = () => {
                                 checked={tripType === 'One Way'}
                                 onChange={() => setTripType('One Way')}
                             />
-                            <span className="ml-3 text-[#ec601d]">One Way</span>
+                            <span className="ml-3 text-[#cc2c21]">One Way</span>
                         </label>
                         <label htmlFor="RoundTrip">
                             <input
@@ -156,17 +156,17 @@ const LeftSide = () => {
                                 checked={tripType === 'Round Trip'}
                                 onChange={() => setTripType('Round Trip')}
                             />
-                            <span className="ml-3 text-[#ec601d]">Round Trip</span>
+                            <span className="ml-3 text-[#cc2c21]">Round Trip</span>
                         </label>
                     </div>
                     <div className="mt-8 gap-y-3 flex  flex-col">
                         <div className="relative">
-                            <span className="text-[#ec601d]">From</span>
+                            <span className="text-[#cc2c21]">From</span>
                             <input
                                 type="text"
                                 value={from}
                                 onChange={(e) => setFrom(e.target.value)}
-                                className="w-full outline-none border rounded-md p-3"
+                                className="w-full outline-none border border-1 border-[#bebebe] focus:border-[#cc2c21] rounded-md p-3"
                             />
                             {fromResults.length > 0 && (
                                 <ul className="p-[10px] absolute bg-[#faebd7] w-full rounded-md z-10">
@@ -187,12 +187,12 @@ const LeftSide = () => {
                         </div>
 
                         <div className="relative">
-                            <span className="text-[#ec601d]">To</span>
+                            <span className="text-[#cc2c21]">To</span>
                             <input
                                 type="text"
                                 value={to}
                                 onChange={(e) => setTo(e.target.value)}
-                                className="w-full outline-none border rounded-md p-3"
+                                className="w-full outline-none border border-1 border-[#bebebe] focus:border-[#cc2c21] rounded-md p-3"
                             />
                             {toResults.length > 0 && (
                                 <ul className="p-[10px] absolute bg-[#faebd7] w-full rounded-md z-10">
@@ -211,15 +211,15 @@ const LeftSide = () => {
                                 </ul>
                             )}
                         </div>
-                        <span className="text-[#ec601d]">Departure</span>
-                        <input type="date" className="w-full outline-none border rounded-md p-3" placeholder="Departure Date" onChange={(e) => setDepartureDate(e.target.value)} />
+                        <span className="text-[#cc2c21]">Departure</span>
+                        <input type="date" className="w-full outline-none border border-1 border-[#bebebe] focus:border-[#cc2c21] rounded-md p-3" placeholder="Departure Date" onChange={(e) => setDepartureDate(e.target.value)} />
                         {tripType === 'Round Trip' && (
                             <>
-                                <span className="text-[#ec601d]">Return</span>
-                                <input type="date" className="w-full outline-none border rounded-md p-3" placeholder="Return Date" onChange={(e) => setReturnDate(e.target.value)} />
+                                <span className="text-[#cc2c21]">Return</span>
+                                <input type="date" className="w-full outline-none border border-1 border-[#bebebe] focus:border-[#cc2c21] rounded-md p-3" placeholder="Return Date" onChange={(e) => setReturnDate(e.target.value)} />
                             </>
                         )}
-                        <button onClick={handleValidation} className="bg-[#ec601d] text-white p-5 rounded-md text-center">BUY DUMMY TICKET</button>
+                        <button onClick={handleValidation} className="bg-[#cc2c21] hover:bg-[#ad0e03] text-white p-3 mt-2 rounded-md text-center">BUY DUMMY TICKET</button>
                     </div>
                 </div>
             </div>
