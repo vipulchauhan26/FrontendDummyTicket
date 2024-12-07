@@ -59,7 +59,7 @@ const Footer = () => {
                 <span className="px-5 border-r">Blog</span>
                 <span className="px-5 border-r flex items-center">
                     <PiCopyrightLight size={30} />
-                    <span> Copyrights 2024 TripCafe.net</span> </span>
+                    <span> Copyrights 2024 TripCafeHolidays.com</span> </span>
 
                 <span className="flex px-5">
                     <img src="https://alike.io/images/social-icon/whatsapp.svg" alt="" className="w-6" />

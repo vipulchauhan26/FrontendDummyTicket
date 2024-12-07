@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TicketEditModal from "./TicketEditModal";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
 
 const MainSection = () => {
     const [tickets, setTickets] = useState([]); // State to store ticket data
@@ -12,6 +13,7 @@ const MainSection = () => {
     const [selectedTicket, setSelectedTicket] = useState(null);
     const [open, setOpen] = useState(false);
     const [editTicket, setEditTicket] = useState();
+    const navigate = useNavigate();
     const handleOpen = (ticket) => {
         setEditTicket(ticket);
         setOpen(true);
@@ -24,10 +26,7 @@ const MainSection = () => {
 
 
     const handleDeleteTicket = (ticketId) => {
-        // Replace with your logic to delete the ticket (e.g., call an API to delete)
-        if (window.confirm('Are you sure you want to delete this ticket?')) {
-            alert(`Deleted ticket with ID: ${ticketId}`);
-        }
+
     };
 
     // Fetch ticket data on component mount
@@ -45,6 +44,10 @@ const MainSection = () => {
                 setLoading(false); // Stop loading
             } catch (error) {
                 console.error('Error fetching ticket data:', error);
+                if (error.response && error.response.status === 401) {
+                    // If status is 401, navigate to the login page
+                    navigate("/");
+                }
                 setLoading(false);
             }
         };
@@ -115,7 +118,7 @@ const MainSection = () => {
                                     className={`px-4 py-2 text-white ${ticket?.status === 'pending'
                                         ? 'text-yellow-500'
                                         : ticket?.status === 'paid'
-                                            ? 'text-green-500'
+                                            ? 'text-green-600'
                                             : ticket?.status === 'failed'
                                                 ? 'text-red-500'
                                                 : ''
@@ -136,9 +139,9 @@ const MainSection = () => {
                                             {/* Delete Ticket Option */}
                                             <button
                                                 className="block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100"
-                                                onClick={() => handleDeleteTicket(ticket._id)}
                                             >
-                                                Delete Ticket
+                                                <a href={`http://localhost:3000/downloadTicket?txnId=${editTicket?.txnid}`} className="download-button">Preview Ticket</a>
+
                                             </button>
                                         </div>
                                     )}
@@ -151,8 +154,8 @@ const MainSection = () => {
             <div className="flex justify-end">
                 <ButtonGroup
                     variant="contained">
-                    <Button onClick={()=>setPage((page)=>page-1)}>&lt;</Button>
-                    <Button onClick={()=>setPage((page)=>page+1)}>&gt;</Button>
+                    <Button onClick={() => setPage((page) => page - 1)}>&lt;</Button>
+                    <Button onClick={() => setPage((page) => page + 1)}>&gt;</Button>
                 </ButtonGroup>
             </div>
 

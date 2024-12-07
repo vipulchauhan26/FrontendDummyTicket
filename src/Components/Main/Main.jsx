@@ -1,10 +1,36 @@
+import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import HeroBackground from "../HeroBackground/HeroBackground";
 import Navbar from "../Navbar/Navbar";
 import Section from "../Section/Section";
 import SectionThree from "../Section/SectionThree";
+import { useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const Main = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Check for access token in local storage (or your preferred storage)
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            // Decode the token to check expiration
+        
+            const decodedToken = jwtDecode(token);
+            const currentTime = Date.now() / 1000;
+
+            if (decodedToken.exp < currentTime) {
+                // Token has expired
+                console.warn("Access token has expired.");
+                // Redirect to login page or refresh the token
+                navigate("/login");
+            }
+        } else {
+            // No token found, redirect to login
+            navigate("/login");
+        }
+    }, [navigate]);
     return (
         <>
             <Navbar />

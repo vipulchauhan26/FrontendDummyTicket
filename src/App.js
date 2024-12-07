@@ -9,6 +9,8 @@ import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 import 'react-toastify/dist/ReactToastify.css';
 import DownloadTicketPage from './Components/Payment/DownloadTicketPage';
+import AdminMain from './Components/Admin/AdminMain';
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/downloadTicket" element={<DownloadTicketPage />} />
+        <Route path="/admin" element={<AdminMain />} />
       </Routes>
 
     </div>

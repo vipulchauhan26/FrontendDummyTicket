@@ -93,7 +93,7 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                 <option value="+84">+84 Vietnam</option>
                                 <option value="+86">+86 China</option>
                                 <option value="+90">+90 Turkey</option>
-                                <option value="+91">+91 India</option>
+                                <option value="+91" selected>+91 India</option>
                                 <option value="+92">+92 Pakistan</option>
                                 <option value="+93">+93 Afghanistan</option>
                                 <option value="+94">+94 Sri Lanka</option>
@@ -264,7 +264,7 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                 </div>
                                 <div className="right w-[50%] flex flex-col gap-6">
                                     <input type="text" name="lastName" placeholder="Last Name" className="border rounded-md p-3" value={passenger.lastName} onChange={(e) => handleInputChange(index, e)}/>
-                                    <select className="dropdown border rounded-md p-3" value={passenger.nationality} onChange={(e) => handleInputChange(index, e)} name="nationality">
+                                    <select className="dropdown border rounded-md p-3" value={passenger.nationality || "Indian"} onChange={(e) => handleInputChange(index, e)} name="nationality">
                                         <option value="" disabled selected>Select Nationality</option>
                                         <option value="Afghan">Afghan</option>
                                         <option value="Albanian">Albanian</option>
@@ -343,7 +343,7 @@ const BookingDetailsRight = ({ totalPassenger, setTotalPassenger, onContactDetai
                                         <option value="Hungarian">Hungarian</option>
                                         <option value="I-Kiribati">I-Kiribati</option>
                                         <option value="Icelander">Icelander</option>
-                                        <option value="Indian">Indian</option>
+                                        <option value="Indian" selected>Indian</option>
                                         <option value="Indonesian">Indonesian</option>
                                         <option value="Iranian">Iranian</option>
                                         <option value="Iraqi">Iraqi</option>
