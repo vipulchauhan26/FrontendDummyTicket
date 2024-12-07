@@ -9,18 +9,17 @@ import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 import 'react-toastify/dist/ReactToastify.css';
 import DownloadTicketPage from './Components/Payment/DownloadTicketPage';
-import AdminMain from './Components/Admin/AdminMain';
 import AboutUs from './Components/About/AboutUs';
 import FAQs from './Components/FAQs/FAQs';
-
+import AdminMain from "./Components/Admin/AdminMain";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<DummyTickets />} />
-       <Route path='/about-us' element={<AboutUs />} />
-         <Route path='/faqs' element={<FAQs/>}/>
+        <Route path='/about-us' element={<AboutUs />} />
+        <Route path='/faqs' element={<FAQs />} />
         <Route path='/booking-details' element={<BookingDetails />} />
         <Route path='/payment-page' element={<PaymentComponent />} />
         <Route path="/login" element={<Login />} />

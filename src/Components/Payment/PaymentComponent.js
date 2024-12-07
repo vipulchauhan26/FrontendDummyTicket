@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { json, useLocation } from "react-router-dom";
+import { json, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 const PaymentComponent = () => {
+    const navigate = useNavigate();
     const generateTxnId = () => {
         const timestamp = Date.now().toString(); // Current timestamp
         const randomString = Math.random().toString(36).substr(2, 9); // Random alphanumeric string
@@ -42,6 +43,9 @@ const PaymentComponent = () => {
             setHash(response.data?.hash); // Access the hash value from the response
         } catch (error) {
             console.error("Payment Error:", error);
+            if(error.response.status===401){
+                navigate("/login");
+            }
         }
     };
 
@@ -66,7 +70,7 @@ const PaymentComponent = () => {
                     <h2 className="text-xl font-semibold mb-4">Payment Details</h2>
 
                     <div className="payment-details">
-                        <p className="mb-2"><strong>Transaction ID:</strong> {txnid}</p>
+                        <p className="mb-2"><strong>Transaction ID:</strong> {txnid}</p> 
                         <p className="mb-2"><strong>Amount:</strong> ₹{amount}</p>
                         <p className="mb-2"><strong>Name:</strong> {name}</p>
                         <p className="mb-2"><strong>Phone:</strong> {phone}</p>
