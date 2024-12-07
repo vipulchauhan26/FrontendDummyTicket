@@ -48,10 +48,10 @@ const Signup = () => {
     return (
         <>
         <Navbar/>
-        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] h-[500px] px-3 mt-20"   style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}}>
+        <section className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[100%] h-[500px] px-3  h-[calc(100vh-250px)] px-3  relative"   style={{background: 'linear-gradient(to bottom,  rgba(255,249,249,0) 25%,rgba(250,242,242,0) 34%,rgba(211,189,187,1) 100%)'}}>
              
-                <div className="flex justify-center p-14 w[100%] my-100 ">
-                        <div className="login-container w-96 border border-white py-[30px] px-[20px] bg-white rounded-md shadow-2xl shadow-slate-900">
+                
+                        <div className="login-container w-[90%] sm:w-[20%] md:w-[20%] lg:w-[20%] xl:w-[20%] border  py-[30px] px-[20px] bg-white rounded-md shadow-2xl shadow-slate-900 m-auto absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
                             <span className=" font-bold text-3xl text-center block mb-[15px]">Signup</span>
                             <div className="text-field-container flex flex-col">
                                 <input type="text" name="username" placeholder="username" className="border mb-[10px] border-black bg-white rounded-md p-[6px] outline-none" onChange={handleFormData} value={formData.username} required />
@@ -67,7 +67,7 @@ const Signup = () => {
                             {loading ? "Loading...":"Signup"}
                             </button>
                         </div>
-                    </div>
+              
              
                 <ToastContainer />
           

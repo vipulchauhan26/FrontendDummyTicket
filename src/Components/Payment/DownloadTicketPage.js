@@ -347,10 +347,10 @@ const TicketDocument = ({ ticketData }) => (
             <View style={styles.termSection}>
                 <Text >
 
-                    <Text style={styles.termHeading}>Purpose of the Dummy Tickets</Text>: The Dummy Ticket you get from Travanya can only be used to
+                    <Text style={styles.termHeading}>Purpose of the Dummy Tickets</Text>: The Dummy Ticket you get from TripCafeHolidays.com can only be used to
                     demonstrate that you intend to apply for a visa. We do not represent at any point in time that the Dummy
-                    Tickets issued by Travanya fulfill the required criterion for a visa application or that you will necessarily
-                    secure a Visa by using the Dummy Ticket. The Dummy Tickets issued by Travanya cannot be used for
+                    Tickets issued by TripCafeHolidays.com fulfill the required criterion for a visa application or that you will necessarily
+                    secure a Visa by using the Dummy Ticket. The Dummy Tickets issued by TripCafeHolidays.com cannot be used for
                     your actual travel or to go on a flight trip and can be neither presented as valid tickets at the airport for air
                     travel. By using our Website and booking a Dummy Ticket you explicitly acknowledge and comprehend
                     the distinction between a Dummy Ticket and a confirmed ticket.
@@ -367,7 +367,7 @@ const TicketDocument = ({ ticketData }) => (
 
             <View style={styles.termSection}>
                 <Text style={styles.termsText}>
-                    Possible Delays: While Travanya tries its best to give you the Dummy Ticket upon successful booking
+                    Possible Delays: While TripCafeHolidays.com tries its best to give you the Dummy Ticket upon successful booking
                     within the committed time, there might be delays due to technical glitches, technical errors/issues, or
                     other reasons. We do not accept any responsibility for any failure in bookings, payment gateway failures,
                     or for all/any reasons that are beyond our control.
@@ -376,7 +376,7 @@ const TicketDocument = ({ ticketData }) => (
 
             <View style={styles.termSection}>
                 <Text style={styles.termsText}>
-                    Acceptance of Dummy Ticket: Travanya cannot guarantee that the Dummy Ticket will be accepted by
+                    Acceptance of Dummy Ticket: TripCafeHolidays.com cannot guarantee that the Dummy Ticket will be accepted by
                     any authority or embassy. It's the user's responsibility to check the visa application requirements.
                 </Text>
             </View>
@@ -444,7 +444,7 @@ const DownloadTicketPage = () => {
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
                 {/* <TicketDocument ticketData={ticketData} /> */}
                 <TicketDocument />
-            </PDFViewer>
+         </PDFViewer>
 
         </div>
     );

@@ -95,7 +95,7 @@ const MainSection = () => {
 
             <div className="flex flex-col bg-white border rounded-lg mt-10 p-8">
                 <span className="font-semibold text-2xl mb-4">Recent Bookings</span>
-                <table className="w-full border-collapse">
+                <table className="w-full border-collapse ">
                     <thead>
                         <tr className="border-b border-gray-200">
                             <th className="px-4 py-2 text-left">Txn ID</th>

@@ -35,11 +35,11 @@ const Navbar = () => {
 
 // });
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Dummy Tickets', href: '/dummy-tickets', current: false },
+    { name: 'Dummy Tickets', href: '/', current: true },
+    { name: 'About Us', href: '/about-us', current: false },
+    { name: 'Faq', href: '/faqs', current: false },
+    { name: 'Contact Us', href: '#', current: false },
+
   
   ]
   
@@ -48,7 +48,7 @@ const navigation = [
   }  
     return (
         <>
-        <div className="navbar-container px-[2%] sm:px-[10%] md:px-[10%] lg:px-[10%] xl:px-[10%] py-[1%] items-center sticky top-0 z-10 bg-white">
+        <div className="navbar-container px-[2%] sm:px-[5.5%] md:px-[5.5%] lg:px-[5.5%] xl:px-[5.5%] py-px-[1%] sm:py-px-[5px 0]  md:py-px-[5px 0]  lg:py-px-[5px 0] xl:py-px-[5px 0] items-center sticky top-0 z-10 bg-white shadow-[5px_2px_10px_rgba(0,0,0,0.3)]">
         <Disclosure as="nav" className=" w-[100%]">
      
         <div className="relative flex h-16 items-center justify-between">
@@ -58,7 +58,7 @@ const navigation = [
               <Link to="/"><img
                 alt="Your Company"
                 src="images/trip-cafe.jpg"  
-                className="h-8 w-auto"
+                className="h-8 sd:h-8 md:h-8 lg:h-8 xl:h-10 w-auto"
               /></Link>
             </div>
            

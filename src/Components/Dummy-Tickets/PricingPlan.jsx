@@ -15,7 +15,7 @@ const PricingPlan = () => {
            <div className='rounded-[20px]  w-[100%] sm:w-[25%] md:w-[25%] lg:w-[25%] xl:w-[25%] border-solid border-zinc-200 border-2 p-6  grid grid-rows  gap-3 bg-white shadow-md'>
            <h3  className='text-2xl md:text-2.5xl lg:text-2.5xl xl:text-2.5xl font-bold  text-center sm:text-center md:text-center lg:text-center sl:text-center'>Flight Reservation</h3>
             <div className='card-img'>
-                <img src="images/flightbooking_min.jpeg" alt=''/>
+                <img src="images/flight-booking.jpg" alt=''/>
             </div>
            <div className='flex  justify-center text-center sm:text-center md:text-center lg:text-center sl:text-center'><div className='text-3xl md:text-3xl lg:text-3xl xl:text-3xl font-[600]'>&#8377;15<small style={{ fontSize: '15px' }}>/Per Person or Child</small></div></div>
            <ul className='p-0 m-0 w-[100%]'>
@@ -24,7 +24,7 @@ const PricingPlan = () => {
               <li className=' text-center py-4'>Price is for oneway and round-trip. Flight reservation for multi-city available at extra cost.</li>
            </ul>
            <Link to="/">
-                            <button className=" w-[100%] border rounded-full bg-[#cc2c21] text-white font-bold p-2 hover:bg-white hover:text-black  hover:border  hover:border-[#cc2c21]  hover:border-1">
+                            <button className=" w-[100%] border rounded-xl bg-[#cc2c21] text-white font-bold py-3 hover:bg-white hover:text-black  hover:border  hover:border-[#cc2c21]  hover:border-1">
                             Get Started
                             </button>
                         </Link>
@@ -32,7 +32,7 @@ const PricingPlan = () => {
            <div className='rounded-[20px] w-[100%] sm:w-[25%] md:w-[25%] lg:w-[25%] xl:w-[25%] border-solid border-zinc-200 border-2 p-6  grid grid-rows  gap-3 bg-white shadow-md'>
            <h3  className='text-2xl md:text-2.5xl lg:text-2.5xl xl:text-2.5xl font-bold  text-center sm:text-center md:text-center lg:text-center sl:text-center'>Hotel Reservation</h3>
             <div className='card-img'>
-                <img src="images/hotalbooking_min.jpeg" alt=''/>
+                <img src="images/hotal-booking.jpg" alt=''/>
             </div>
             
             <div className='flex  justify-center text-center sm:text-center md:text-center lg:text-center sl:text-center'><div className='text-3xl md:text-3xl lg:text-3xl xl:text-3xl font-[600]'>&#8377;15<small style={{ fontSize: '15px' }}>/Per Person or Child</small></div></div>
@@ -42,7 +42,7 @@ const PricingPlan = () => {
               <li className=' text-center py-4'>Price is for oneway and round-trip. Flight reservation for multi-city available at extra cost.</li>
            </ul>
            <Link to="/">
-                            <button className=" w-[100%] border rounded-full bg-[#cc2c21] text-white font-bold p-2 hover:bg-white hover:text-black  hover:border  hover:border-[#cc2c21]  hover:border-1">
+                            <button className=" w-[100%] border rounded-xl bg-[#cc2c21] text-white font-bold py-3 hover:bg-white hover:text-black  hover:border  hover:border-[#cc2c21]  hover:border-1">
                             Get Started
                             </button>
                         </Link>
